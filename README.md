@@ -1,4 +1,4 @@
-# ML Projects Collection
+# ML Foundation
 ### A Practical Machine Learning Learning Journey, Experiments, Visualizations, Pipelines & Engineering Skills
 
 This repository documents my **machine learning learning journey** as I grow from a beginner into a confident ML practitioner.  
@@ -9,7 +9,7 @@ I am learning using two foundational textbooks:
 - **Hands‑On Machine Learning with Scikit‑Learn, Keras & TensorFlow by Aurélien Géron**
 - **Introduction to Machine Learning with Python by Andreas C. Müller & Sarah Guido**
 
-This repo serves as my **personal ML lab**, where I experiment, document, comment, and refine my understanding of how ML systems are built in industry.
+This repo serves as my **personal ML playground**, where I experiment, document, comment, and refine my understanding of how ML systems are built in industry.
 
 ---
 
