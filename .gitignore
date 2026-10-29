@@ -1,5 +1,7 @@
+# Jupyter
+.jupyter/
 .ipynb_checkpoints/
-*.ipynb_checkpoints
+*.jupyterlab-workspace
 
 *.pkl
 *.pickle
