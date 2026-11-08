@@ -53,40 +53,33 @@ Similar records are close together.
 Different records are farther apart.
 
 ------------------------------------------------------------
-
 FEATURE ENGINEERING
 
 Feature Engineering is the process of transforming raw data into useful numerical features that a model can learn from.
 
 Goals:
-
 - Improve model performance
 - Increase predictive power
 - Represent information more effectively
 - Prepare data for training
 
 Before building feature vectors, numerical features should be inspected through:
-
 - Visualizations
 - Statistical summaries
 
 ------------------------------------------------------------
-
 MULTICOLLINEARITY
 
 Multicollinearity occurs when two or more features contain nearly identical information.
 
 Example:
-
 - House Size
 - Number of Rooms
 
 Larger houses usually contain more rooms.
-
 The features move together and provide similar signals.
 
 Problems:
-
 - Unstable model coefficients
 - Inflated variance
 - Reduced interpretability
@@ -95,7 +88,6 @@ Problems:
 Highly correlated features act like duplicates.
 
 ------------------------------------------------------------
-
 NUMERICAL FEATURE INSPECTION CHECKLIST
 
 Before training, inspect every numerical feature for:
@@ -116,21 +108,17 @@ Before training, inspect every numerical feature for:
 14. Feature Interactions
 
 ------------------------------------------------------------
-
 1. RANGE
 
 What It Shows:
-
 - Minimum value
 - Maximum value
 - Scale differences
 
 Why It Matters:
-
 Features with very large ranges dominate smaller features.
 
 Example:
-
 Age:
 1 → 12
 
@@ -140,128 +128,102 @@ Mileage:
 Mileage will dominate unless scaling is applied.
 
 ------------------------------------------------------------
-
 2. DISTRIBUTION SHAPE
 
 Distribution shape describes how values are spread.
 
 Common Shapes:
-
 - Symmetric
 - Left-Skewed
 - Right-Skewed
 - Bimodal
 
 Why It Matters:
-
 Highly skewed features often need transformation.
 
 Common Solution:
-
 - Log Transformation
 
 ------------------------------------------------------------
-
 3. OUTLIERS
 
 Outliers are values far from the rest of the data.
 
 Questions:
-
 - Is it an error?
 - Is it a rare event?
 - Is it a valid observation?
 
 Problems:
-
 - Distort averages
 - Distort scaling
 - Distort gradients
 
 Common Detection Method:
-
 1.5 × IQR Rule
 
 ------------------------------------------------------------
-
 4. SENTINEL VALUES
 
 Sentinel Values are special numbers used to indicate missing data.
 
 Examples:
-
 -1
 0
 999
 
 Problem:
-
 Models treat them as real values.
 
 Instead of:
-
 Mileage = Unknown
 
 The model sees:
-
 Mileage = -1
-
 This creates misleading patterns.
 
 ------------------------------------------------------------
-
 5. MISSING VALUE PATTERNS
 
 Investigate:
-
 - Number of missing values
 - Random missingness
 - Systematic missingness
 
 Why It Matters:
-
 Missing values sometimes contain hidden information.
 
 ------------------------------------------------------------
-
 6. CONSTANT FEATURES
 
 A constant feature barely changes.
 
 Example:
-
 99% of values = 1
 
 Why It Matters:
-
 The feature contributes almost no useful information.
-
 Usually removed.
 
 ------------------------------------------------------------
-
 7. FEATURE CORRELATIONS
 
 Measures relationships between features.
 
 Questions:
-
 - Are two features nearly identical?
 - Is multicollinearity present?
 
 Problems:
-
 - Redundant information
 - Unstable coefficients
 
 ------------------------------------------------------------
-
 8. CLUSTERS
 
 Clusters occur when values naturally group together.
 
 Example:
-
 Customer Spending:
 
 Low-Spending Group
@@ -271,61 +233,49 @@ High-Spending Group
 May indicate useful segmentation opportunities.
 
 ------------------------------------------------------------
-
 9. SEASONALITY
 
 Data changes over time according to repeating patterns.
 
 Examples:
-
 - Hour of day
 - Day of week
 - Month of year
 
 Why It Matters:
-
 Time-based features may improve predictions.
 
 ------------------------------------------------------------
-
 10. DRIFT
 
 Drift occurs when a feature's distribution changes over time.
 
 Example:
-
 Customer behavior changes after deployment.
 
 Problem:
-
 Models trained on old distributions perform poorly on new data.
 
 ------------------------------------------------------------
-
 11. SPARSITY
 
 Sparse features contain mostly zeros.
 
 Example:
-
 [0,0,0,1,0,0,0,0]
 
 Often occurs after One-Hot Encoding.
-
 May require special handling.
 
 ------------------------------------------------------------
-
 12. NON-LINEAR RELATIONSHIPS
 
 Not all features follow straight-line relationships.
 
 Example:
-
 Car Age vs Price
 
 The price may:
-
 - Start high
 - Drop rapidly
 - Stabilize later
@@ -333,32 +283,27 @@ The price may:
 Linear models struggle with such patterns.
 
 Possible Solutions:
-
 - Binning
 - Polynomial Features
 - Tree-Based Models
 
 ------------------------------------------------------------
-
 13. DUPLICATE ROWS
 
 Duplicate rows represent repeated observations.
 
 Problems:
-
 - Distorted distributions
 - Training bias
 
 Duplicates should be investigated before training.
 
 ------------------------------------------------------------
-
 14. FEATURE INTERACTIONS
 
 Some features become useful only when combined.
 
 Example:
-
 Neighborhood + House Type
 
 Individually useful.
@@ -367,107 +312,70 @@ Together even more informative.
 These interactions can be modeled using Feature Crosses.
 
 ------------------------------------------------------------
-
 MEAN VS MEDIAN
 
 Mean:
-
 Average value.
 
 Median:
-
 Middle value.
 
 Example:
-
 [5000, 5200, 5300, 5400, 50000]
 
-Mean:
-
-13,780
-
-Median:
-
-5,300
+Mean: 13,780
+Median: 5,300
 
 Interpretation:
-
-Mean > Median
-
-→ Right-Skewed Distribution
+Mean > Median → Right-Skewed Distribution
 
 Reason:
-
 The extreme value (50,000) pulls the average upward.
 
 ------------------------------------------------------------
-
 LEFT-SKEWED DISTRIBUTION
 
 Example:
-
 [100, 120, 130, 140, 5]
 
-Mean:
-
-99
-
-Median:
-
-120
+Mean: 99
+Median: 120
 
 Interpretation:
-
 Median > Mean
-
 → Left-Skewed Distribution
 
 Reason:
-
 The very small value pulls the average downward.
 
 ------------------------------------------------------------
-
 OUTLIER DETECTION USING THE IQR RULE
 
 Given:
-
 Q1 = 5,000
 Q3 = 5,400
 
 IQR:
-
 Q3 − Q1
 = 400
 
 1.5 × IQR:
-
 600
 
-Lower Bound:
-
-4,400
-
-Upper Bound:
-
-6,000
+Lower Bound: 4,400
+Upper Bound: 6,000
 
 Any value:
-
-< 4,400
-or
-> 6,000
+< 4,400 or > 6,000
 
 is considered a potential outlier.
 
 ------------------------------------------------------------
-
 FEATURE SCALING
 
 Different features often have different scales.
 
 Example:
-
 Age:
 1 → 12
 
@@ -475,17 +383,14 @@ Mileage:
 500 → 200,000
 
 Without scaling, large features dominate learning.
-
 Scaling places features on comparable ranges.
 
 Benefits:
-
 - Faster training
 - Better convergence
 - Fair feature comparison
 
 ------------------------------------------------------------
-
 NORMALIZATION TECHNIQUES
 
 1. Min-Max Scaling
@@ -494,92 +399,68 @@ NORMALIZATION TECHNIQUES
 4. Clipping
 
 ------------------------------------------------------------
-
 MIN-MAX SCALING
 
 Formula:
-
 x' = (x − min) / (max − min)
 
 Output Range:
-
 0 → 1
 
 Best For:
-
 - Features with stable ranges
 - Roughly uniform distributions
 
 Weakness:
-
 Sensitive to outliers.
 
 ------------------------------------------------------------
-
 Z-SCORE STANDARDIZATION
 
 Formula:
-
 x' = (x − mean) / std_dev
 
 Properties:
-
 - Mean = 0
 - Standard Deviation = 1
 
 Best For:
-
 - Normally distributed features
 
 Advantages:
-
 - Less sensitive to outliers
 - Most common default scaling method
 
 ------------------------------------------------------------
-
 LOG SCALING
 
 Formula:
-
 x' = ln(x)
 
 Best For:
-
 - Right-skewed data
 - Long-tail distributions
 
 Examples:
-
 - Book Sales
 - Website Traffic
 - Product Popularity
 
 Benefits:
-
 - Compresses extreme values
 - Stabilizes variance
 
 ------------------------------------------------------------
-
 CLIPPING
 
 Clipping limits extreme values.
 
 Example:
-
 Upper Limit = 4
-
-Original:
-
-10
-
-After Clipping:
-
-4
+Original: 10
+After Clipping: 4
 
 Benefits:
-
 - Reduces outlier influence
 - Improves training stability
 
@@ -587,7 +468,6 @@ Benefits:
 WHEN TO SCALE
 
 Scale Features For:
-
 - Linear Regression
 - Logistic Regression
 - Support Vector Machines (SVM)
