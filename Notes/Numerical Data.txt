@@ -4,25 +4,21 @@ A machine-learning model does not understand cars, houses, customers, or patient
 It only understands numbers.
 
 Before data enters a model, each record is converted into a Feature Vector.
-
 A Feature Vector is an ordered list of numerical values that represent a record.
 
 The model never sees the real object.
 It only sees the numerical vector describing that object.
 
 ------------------------------------------------------------
-
 FROM A RECORD TO A FEATURE VECTOR
 
 Example Record:
-
 - Age = 4 years
 - Mileage = 56,000 km
 - Engine Size = 1,600 cc
 - Price = £11,200
 
 Feature Vector:
-
 [4, 56000, 1600, 11200]
 
 Each position always represents the same feature:
@@ -35,13 +31,11 @@ Position 4 → Price
 The model reads numbers, not meanings.
 
 ------------------------------------------------------------
-
 WHY FEATURE VECTORS MATTER
 
 Feature vectors provide a consistent numerical format for machine-learning models.
 
 Important Rules:
-
 - Every feature must be numerical.
 - Every row must follow the same feature order.
 - Every row must contain the same number of features.
