@@ -256,7 +256,7 @@ Models trained on old distributions perform poorly on new data.
 Sparse features contain mostly zeros.
 
 Example:
-[0,0,0,1,0,0,0,0]
+[0, 0, 0, 1, 0, 0, 0, 0]
 
 Often occurs after One-Hot Encoding.
 May require special handling.
@@ -522,7 +522,7 @@ ONE-HOT ENCODING BINS
 
 Example:
 Bin 3
-[0,0,1,0,0]
+[0, 0, 1, 0, 0]
 
 Only the active bin contains 1.
 The model learns a separate weight for each bin.
@@ -547,7 +547,6 @@ DATA SCRUBBING (DATA CLEANING)
 Data Scrubbing is the process of fixing data quality issues before training.
 
 Common Problems:
-
 1. Missing Values
 2. Duplicate Rows
 3. Sentinel Values
